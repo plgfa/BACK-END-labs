@@ -1,0 +1,12 @@
+INFO Дата перевірки: 2026-11-02T01:21:10Z
+INFO Система: Linux 7.0.0-42-generic
+INFO Оболонка: bash
+PASS W1: робоча папка «ed-learning» існує, назва без пробілів і без літер поза латиницею
+PASS W2: є підпапки notes, practice, projects
+PASS W3: README.md: непорожніх рядків - 4
+PASS W4: git version 2.53.0 (потрібно 2.30 або новіший)
+INFO Git core.editor: vim
+PASS W5: VS Code 1.143.0, команда code доступна в терміналі
+PASS W6: notes/plan.md і notes/schedule.md на місці
+PASS W7: notes/obstacle.md описує перешкоду і спосіб її усунення
+Результат: PASS

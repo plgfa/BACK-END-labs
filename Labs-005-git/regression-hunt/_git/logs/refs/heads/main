@@ -1,0 +1,10 @@
+0000000000000000000000000000000000000000 3446bf3f9a9fbf0ac01251df573145f34706f572 Оксана Мельник <oksana@example.invalid> 1772434800 +0200	commit (initial): Додати початкові дані про зали й ціни
+3446bf3f9a9fbf0ac01251df573145f34706f572 c4eea8a955d8ad0f79494b23606b33f7691dd529 Тарас Бондар <taras@example.invalid> 1772524800 +0200	commit: Додати аудиторію «Сад»
+c4eea8a955d8ad0f79494b23606b33f7691dd529 9e15980e9995b34c0c7316f658d44ae58d4763fb Ірина Ковальчук <iryna@example.invalid> 1772614800 +0200	commit: Додати групову знижку
+9e15980e9995b34c0c7316f658d44ae58d4763fb 643969bc5690b7112892614ce863aa1adbdd608f Тарас Бондар <taras@example.invalid> 1772724600 +0200	commit: Привести записи місткості до одного формату
+643969bc5690b7112892614ce863aa1adbdd608f 25396ce8098e801998f1c3826e449aae57874c6f Оксана Мельник <oksana@example.invalid> 1772781300 +0200	commit: Додати знижку за ранню реєстрацію
+25396ce8098e801998f1c3826e449aae57874c6f 47c878dfd0c72fa33daa1d8f87bbe6b8e871cdfc Ірина Ковальчук <iryna@example.invalid> 1773052800 +0200	commit: Додати в README правило перевірки
+47c878dfd0c72fa33daa1d8f87bbe6b8e871cdfc 9e342c42df2236f82df86ecb7e20d961c0a54c7d Тарас Бондар <taras@example.invalid> 1773147900 +0200	commit: Додати загальну місткість у README
+9e342c42df2236f82df86ecb7e20d961c0a54c7d 4d702e34f5f651792e6bd6d71d60682395a7cedf plgfa <plhgfa.w@gmail.com> 1793962992 +0200	commit: Fix some trouble
+4d702e34f5f651792e6bd6d71d60682395a7cedf 6dfe9d64916995eb6a0c04fc6c7a5fd2326e272c plgfa <plhgfa.w@gmail.com> 1793963160 +0200	commit: add report and reset venues
+6dfe9d64916995eb6a0c04fc6c7a5fd2326e272c 8ba3f7e21157b09ef60037440c76e7d38c0a69cc plgfa <plhgfa.w@gmail.com> 1793963214 +0200	commit: Add correct report.md

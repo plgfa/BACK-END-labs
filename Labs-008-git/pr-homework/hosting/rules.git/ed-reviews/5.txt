@@ -1,0 +1,6 @@
+round: 5
+branch: feature/add-rule-five
+commit: f9c7d060bd484127f2946ab95739189fec5cb4bc
+verdict: CHANGES_REQUESTED
+comment: [CONTRIBUTING 1] Гілка відстала від актуальної main. Злийте main у свою гілку (git switch <гілка>, git merge main), відправте.
+comment: [CONTRIBUTING 2] Файл 'pr-description.md' не стосується задачі. Приберіть його з гілки новим комітом.

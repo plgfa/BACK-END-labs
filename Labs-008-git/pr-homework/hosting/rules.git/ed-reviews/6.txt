@@ -1,0 +1,5 @@
+round: 6
+branch: feature/add-rule-five
+commit: bb19c7ca00a8040049a5756cb45b9bcd29b6738c
+verdict: CHANGES_REQUESTED
+comment: [CONTRIBUTING 1] Гілка відстала від актуальної main. Злийте main у свою гілку (git switch <гілка>, git merge main), відправте.

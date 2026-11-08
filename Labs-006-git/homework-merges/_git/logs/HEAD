@@ -1,0 +1,16 @@
+0000000000000000000000000000000000000000 14dabe2a834d9160c0b0c5144a04bdeeb3f0bb53 Колега ED Mentorship <colleague@example.invalid> 1769929200 +0200	commit (initial): Початкові правила
+14dabe2a834d9160c0b0c5144a04bdeeb3f0bb53 14dabe2a834d9160c0b0c5144a04bdeeb3f0bb53 Колега ED Mentorship <colleague@example.invalid> 1769929200 +0200	checkout: moving from main to typo-fix
+14dabe2a834d9160c0b0c5144a04bdeeb3f0bb53 12e9556b758b7ac84e3a175eafa4df32d6201c66 Колега ED Mentorship <colleague@example.invalid> 1769932800 +0200	commit: Виправити друкарську помилку в README
+12e9556b758b7ac84e3a175eafa4df32d6201c66 14dabe2a834d9160c0b0c5144a04bdeeb3f0bb53 Колега ED Mentorship <colleague@example.invalid> 1769932800 +0200	checkout: moving from typo-fix to main
+14dabe2a834d9160c0b0c5144a04bdeeb3f0bb53 14dabe2a834d9160c0b0c5144a04bdeeb3f0bb53 Колега ED Mentorship <colleague@example.invalid> 1769932800 +0200	checkout: moving from main to discounts
+14dabe2a834d9160c0b0c5144a04bdeeb3f0bb53 99017e40734db01c04fc218b97c9d144f391a579 Колега ED Mentorship <colleague@example.invalid> 1770022800 +0200	commit: Додати правила для груп
+99017e40734db01c04fc218b97c9d144f391a579 14dabe2a834d9160c0b0c5144a04bdeeb3f0bb53 Колега ED Mentorship <colleague@example.invalid> 1770022800 +0200	checkout: moving from discounts to main
+14dabe2a834d9160c0b0c5144a04bdeeb3f0bb53 14dabe2a834d9160c0b0c5144a04bdeeb3f0bb53 Колега ED Mentorship <colleague@example.invalid> 1770022800 +0200	checkout: moving from main to refunds
+14dabe2a834d9160c0b0c5144a04bdeeb3f0bb53 6f45e3d2c191e5df3c47d69d154097c94debf122 Колега ED Mentorship <colleague@example.invalid> 1770112800 +0200	commit: Додати правило повернення коштів
+6f45e3d2c191e5df3c47d69d154097c94debf122 14dabe2a834d9160c0b0c5144a04bdeeb3f0bb53 Колега ED Mentorship <colleague@example.invalid> 1770112800 +0200	checkout: moving from refunds to main
+14dabe2a834d9160c0b0c5144a04bdeeb3f0bb53 6c831087598ae1f57cdf3b92a116a0d771284292 Колега ED Mentorship <colleague@example.invalid> 1770202800 +0200	commit: Додати вимогу замовника до правила 2
+6c831087598ae1f57cdf3b92a116a0d771284292 b939cd218ed270a89a0d8e39bf8243a412720d7a Колега ED Mentorship <colleague@example.invalid> 1794004408 +0200	commit: Прогноз злиттів
+b939cd218ed270a89a0d8e39bf8243a412720d7a 64a758a46aa22bd27aa8e26cbf488c51662da88e Колега ED Mentorship <colleague@example.invalid> 1794004425 +0200	merge typo-fix: Merge made by the 'ort' strategy.
+64a758a46aa22bd27aa8e26cbf488c51662da88e e49f3e7582b4f48efa9749f73c8edcc11b7256ef Колега ED Mentorship <colleague@example.invalid> 1794004429 +0200	merge discounts: Merge made by the 'ort' strategy.
+e49f3e7582b4f48efa9749f73c8edcc11b7256ef 9ba1ec61bb8b8dbdad976a5ee778dd64c98e150a Колега ED Mentorship <colleague@example.invalid> 1794004568 +0200	commit (merge): Merge branch 'refunds' and resolve conflict in rules.md
+9ba1ec61bb8b8dbdad976a5ee778dd64c98e150a 9c7cfc2011f92ecfa279c7671088461c9db392ff Колега ED Mentorship <colleague@example.invalid> 1794004794 +0200	commit: Done

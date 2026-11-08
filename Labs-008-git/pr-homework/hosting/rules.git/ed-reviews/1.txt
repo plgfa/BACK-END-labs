@@ -1,0 +1,7 @@
+round: 1
+branch: feature/add-rule-five
+commit: 6ff96eccfc215707332f7b641e50faad1bdb3bbf
+verdict: CHANGES_REQUESTED
+comment: [CONTRIBUTING 5] В описі pull request лишилися незаповнені розділи «(заповніть)».
+comment: [CONTRIBUTING 5] Опис pull request без назви: замініть рядок «<Назва pull request>».
+comment: [Замовник] Замовник уточнив вимогу: штраф - 15% вартості квитка, а не 10%. Оновіть правило 5 у цьому ж pull request.

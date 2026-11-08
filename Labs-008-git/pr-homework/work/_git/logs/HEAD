@@ -1,0 +1,23 @@
+0000000000000000000000000000000000000000 d3a532357ead3693c9f8f15a062ac8258478127e plgfa <plhgfa.w@gmail.com> 1794144818 +0200	clone: from /home/plhgfa/Документы/BackEnd -> Работа/My works/Labs-008-git/pr-homework/hosting/rules.git
+d3a532357ead3693c9f8f15a062ac8258478127e d3a532357ead3693c9f8f15a062ac8258478127e plgfa <plhgfa.w@gmail.com> 1794144975 +0200	checkout: moving from main to feature/add-rule-five
+d3a532357ead3693c9f8f15a062ac8258478127e 6ff96eccfc215707332f7b641e50faad1bdb3bbf plgfa <plhgfa.w@gmail.com> 1794145106 +0200	commit: Add rules about fine and update magazin
+6ff96eccfc215707332f7b641e50faad1bdb3bbf bcf7bf57d80d79ef43e450d134ae6e8ce232e914 plgfa <plhgfa.w@gmail.com> 1794145296 +0200	commit: Update size of fine from 10 to 15 percent
+bcf7bf57d80d79ef43e450d134ae6e8ce232e914 2167209b7f8478ac66ff45a31562fb739ae964c5 plgfa <plhgfa.w@gmail.com> 1794145577 +0200	commit: Update state of branch
+2167209b7f8478ac66ff45a31562fb739ae964c5 3177cc0d5792e4c1b28b9228fcc3f79f954a651c plgfa <plhgfa.w@gmail.com> 1794145678 +0200	commit: Update state
+3177cc0d5792e4c1b28b9228fcc3f79f954a651c d3a532357ead3693c9f8f15a062ac8258478127e plgfa <plhgfa.w@gmail.com> 1794145957 +0200	checkout: moving from feature/add-rule-five to main
+d3a532357ead3693c9f8f15a062ac8258478127e 0ae8ace0eb242368843957ca110d6d4e099f8aaf plgfa <plhgfa.w@gmail.com> 1794145957 +0200	merge feature/add-rule-five: Merge made by the 'ort' strategy.
+0ae8ace0eb242368843957ca110d6d4e099f8aaf 3177cc0d5792e4c1b28b9228fcc3f79f954a651c plgfa <plhgfa.w@gmail.com> 1794146426 +0200	checkout: moving from main to feature/add-rule-five
+3177cc0d5792e4c1b28b9228fcc3f79f954a651c f9c7d060bd484127f2946ab95739189fec5cb4bc plgfa <plhgfa.w@gmail.com> 1794146441 +0200	commit: add pr description and update rules
+f9c7d060bd484127f2946ab95739189fec5cb4bc 0ae8ace0eb242368843957ca110d6d4e099f8aaf plgfa <plhgfa.w@gmail.com> 1794146454 +0200	checkout: moving from feature/add-rule-five to main
+0ae8ace0eb242368843957ca110d6d4e099f8aaf 4f3234166c2a567add870baabe07a6dfcd60c6d3 plgfa <plhgfa.w@gmail.com> 1794146454 +0200	merge feature/add-rule-five: Merge made by the 'ort' strategy.
+4f3234166c2a567add870baabe07a6dfcd60c6d3 f9c7d060bd484127f2946ab95739189fec5cb4bc plgfa <plhgfa.w@gmail.com> 1794146525 +0200	checkout: moving from main to feature/add-rule-five
+f9c7d060bd484127f2946ab95739189fec5cb4bc f9c7d060bd484127f2946ab95739189fec5cb4bc plgfa <plhgfa.w@gmail.com> 1794146584 +0200	checkout: moving from feature/add-rule-five to feature/add-rule-five
+f9c7d060bd484127f2946ab95739189fec5cb4bc bb19c7ca00a8040049a5756cb45b9bcd29b6738c plgfa <plhgfa.w@gmail.com> 1794146584 +0200	commit: trigger final review check
+bb19c7ca00a8040049a5756cb45b9bcd29b6738c bb19c7ca00a8040049a5756cb45b9bcd29b6738c plgfa <plhgfa.w@gmail.com> 1794146622 +0200	checkout: moving from feature/add-rule-five to feature/add-rule-five
+bb19c7ca00a8040049a5756cb45b9bcd29b6738c 863f4e9bab95f77ad370ca5b04165792f809443b plgfa <plhgfa.w@gmail.com> 1794146622 +0200	merge main: Merge made by the 'ort' strategy.
+863f4e9bab95f77ad370ca5b04165792f809443b 4f3234166c2a567add870baabe07a6dfcd60c6d3 plgfa <plhgfa.w@gmail.com> 1794146670 +0200	checkout: moving from feature/add-rule-five to main
+4f3234166c2a567add870baabe07a6dfcd60c6d3 f1f4ed73fae85ca750cc4e308c1c3030b34be078 plgfa <plhgfa.w@gmail.com> 1794146670 +0200	merge feature/add-rule-five: Merge made by the 'ort' strategy.
+f1f4ed73fae85ca750cc4e308c1c3030b34be078 f1f4ed73fae85ca750cc4e308c1c3030b34be078 plgfa <plhgfa.w@gmail.com> 1794150310 +0200	checkout: moving from main to main
+f1f4ed73fae85ca750cc4e308c1c3030b34be078 f1f4ed73fae85ca750cc4e308c1c3030b34be078 plgfa <plhgfa.w@gmail.com> 1794150310 +0200	checkout: moving from main to feature/test-pr
+f1f4ed73fae85ca750cc4e308c1c3030b34be078 274d604f19c2a94092113cc087eee5ce2eb7796b plgfa <plhgfa.w@gmail.com> 1794150335 +0200	commit: add test row for PR verification
+274d604f19c2a94092113cc087eee5ce2eb7796b 540dd169c7cc558fd88254f899737014003374a3 plgfa <plhgfa.w@gmail.com> 1794152849 +0200	commit: add test task info for pr

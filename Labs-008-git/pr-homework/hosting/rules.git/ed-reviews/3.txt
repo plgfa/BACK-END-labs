@@ -1,0 +1,5 @@
+round: 3
+branch: feature/add-rule-five
+commit: 2167209b7f8478ac66ff45a31562fb739ae964c5
+verdict: CHANGES_REQUESTED
+comment: [CONTRIBUTING 5] Опис pull request без назви: замініть рядок «<Назва pull request>».

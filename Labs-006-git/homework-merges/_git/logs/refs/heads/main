@@ -1,0 +1,7 @@
+0000000000000000000000000000000000000000 14dabe2a834d9160c0b0c5144a04bdeeb3f0bb53 Колега ED Mentorship <colleague@example.invalid> 1769929200 +0200	commit (initial): Початкові правила
+14dabe2a834d9160c0b0c5144a04bdeeb3f0bb53 6c831087598ae1f57cdf3b92a116a0d771284292 Колега ED Mentorship <colleague@example.invalid> 1770202800 +0200	commit: Додати вимогу замовника до правила 2
+6c831087598ae1f57cdf3b92a116a0d771284292 b939cd218ed270a89a0d8e39bf8243a412720d7a Колега ED Mentorship <colleague@example.invalid> 1794004408 +0200	commit: Прогноз злиттів
+b939cd218ed270a89a0d8e39bf8243a412720d7a 64a758a46aa22bd27aa8e26cbf488c51662da88e Колега ED Mentorship <colleague@example.invalid> 1794004425 +0200	merge typo-fix: Merge made by the 'ort' strategy.
+64a758a46aa22bd27aa8e26cbf488c51662da88e e49f3e7582b4f48efa9749f73c8edcc11b7256ef Колега ED Mentorship <colleague@example.invalid> 1794004429 +0200	merge discounts: Merge made by the 'ort' strategy.
+e49f3e7582b4f48efa9749f73c8edcc11b7256ef 9ba1ec61bb8b8dbdad976a5ee778dd64c98e150a Колега ED Mentorship <colleague@example.invalid> 1794004568 +0200	commit (merge): Merge branch 'refunds' and resolve conflict in rules.md
+9ba1ec61bb8b8dbdad976a5ee778dd64c98e150a 9c7cfc2011f92ecfa279c7671088461c9db392ff Колега ED Mentorship <colleague@example.invalid> 1794004794 +0200	commit: Done

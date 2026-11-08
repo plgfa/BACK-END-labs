@@ -1,0 +1,5 @@
+0000000000000000000000000000000000000000 a7e3d8d8a0e31bfb24c28b0bfc0de4980a1a73bd plgfa <plhgfa.w@gmail.com> 1793921323 +0200	commit (initial): add new files
+a7e3d8d8a0e31bfb24c28b0bfc0de4980a1a73bd a1f5b95eb2b4ac99b6f21a9e5d9c819929dc104a plgfa <plhgfa.w@gmail.com> 1793921373 +0200	commit: update PLAN.md
+a1f5b95eb2b4ac99b6f21a9e5d9c819929dc104a 69fc490e588c906ae7197d6449e32a6a44c987ef plgfa <plhgfa.w@gmail.com> 1793921550 +0200	commit: unpdate PLAN.md and budget.md
+69fc490e588c906ae7197d6449e32a6a44c987ef de13e4bf27d34fa4684de977e1aa9893f42213d2 plgfa <plhgfa.w@gmail.com> 1793921870 +0200	commit: some question about lab
+de13e4bf27d34fa4684de977e1aa9893f42213d2 4c93dd2e4d235ddbb557383669720f2635137012 plgfa <plhgfa.w@gmail.com> 1793922777 +0200	commit: add gitignore that don't delete file

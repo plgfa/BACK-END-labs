@@ -1,0 +1,8 @@
+0000000000000000000000000000000000000000 d3a532357ead3693c9f8f15a062ac8258478127e plgfa <plhgfa.w@gmail.com> 1794144975 +0200	branch: Created from HEAD
+d3a532357ead3693c9f8f15a062ac8258478127e 6ff96eccfc215707332f7b641e50faad1bdb3bbf plgfa <plhgfa.w@gmail.com> 1794145106 +0200	commit: Add rules about fine and update magazin
+6ff96eccfc215707332f7b641e50faad1bdb3bbf bcf7bf57d80d79ef43e450d134ae6e8ce232e914 plgfa <plhgfa.w@gmail.com> 1794145296 +0200	commit: Update size of fine from 10 to 15 percent
+bcf7bf57d80d79ef43e450d134ae6e8ce232e914 2167209b7f8478ac66ff45a31562fb739ae964c5 plgfa <plhgfa.w@gmail.com> 1794145577 +0200	commit: Update state of branch
+2167209b7f8478ac66ff45a31562fb739ae964c5 3177cc0d5792e4c1b28b9228fcc3f79f954a651c plgfa <plhgfa.w@gmail.com> 1794145678 +0200	commit: Update state
+3177cc0d5792e4c1b28b9228fcc3f79f954a651c f9c7d060bd484127f2946ab95739189fec5cb4bc plgfa <plhgfa.w@gmail.com> 1794146441 +0200	commit: add pr description and update rules
+f9c7d060bd484127f2946ab95739189fec5cb4bc bb19c7ca00a8040049a5756cb45b9bcd29b6738c plgfa <plhgfa.w@gmail.com> 1794146584 +0200	commit: trigger final review check
+bb19c7ca00a8040049a5756cb45b9bcd29b6738c 863f4e9bab95f77ad370ca5b04165792f809443b plgfa <plhgfa.w@gmail.com> 1794146622 +0200	merge main: Merge made by the 'ort' strategy.

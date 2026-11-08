@@ -1,0 +1,6 @@
+round: 4
+branch: feature/add-rule-five
+commit: 3177cc0d5792e4c1b28b9228fcc3f79f954a651c
+verdict: CHANGES_REQUESTED
+comment: [CONTRIBUTING 5] Опис pull request без назви: замініть рядок «<Назва pull request>».
+comment: [Замовник] Правило 5 має бути: «5. Скасування менше ніж за 24 години до початку - штраф 15% вартості квитка.» (вимогу уточнено в першому рев'ю).
