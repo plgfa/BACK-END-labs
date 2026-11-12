@@ -36,7 +36,7 @@ jobs:
           script: |
             const sha = process.env.MCI_HEAD_SHA;
             const number = context.payload.pull_request.number;
-            const result = {name: 'PR setup', sha, version: '1.3.0', checks: []};
+            const result = {name: 'PR setup', sha, version: '1.3.1', checks: []};
             const add = (name, status, detail) => result.checks.push({name, status, detail, errors: []});
             let phase = 'PR metadata';
             core.setOutput('active', 'false');

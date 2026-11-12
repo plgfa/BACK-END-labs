@@ -1,10 +1,21 @@
 {
-  "version": "1.3.0",
+  "version": "1.3.1",
   "mentors": [
     "exc3pt1ongit"
   ],
   "branch_exceptions": {},
   "assignments": {
+    "CS-BASICS-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.CS.BASICS.01",
+      "lesson": "LANG.CS.BASICS.L05",
+      "module": "csharp-basics",
+      "source": "content/shared/LANG/CS/LANG.CS.BASICS/LANG.CS.BASICS.L05.md"
+    },
     "CS-BASICS-02": {
       "ai_policy": "FORBIDDEN",
       "checker": null,
@@ -14,7 +25,7 @@
       "assignment_ref": "ASG.LANG.CS.BASICS.02",
       "lesson": "LANG.CS.BASICS.L01",
       "module": "csharp-basics",
-      "source": "content/shared/LANG/LANG.CS/LANG.CS.BASICS/LANG.CS.BASICS.L01.md"
+      "source": "content/shared/LANG/CS/LANG.CS.BASICS/LANG.CS.BASICS.L01.md"
     },
     "CS-BASICS-03": {
       "ai_policy": "FORBIDDEN",
@@ -25,7 +36,40 @@
       "assignment_ref": "ASG.LANG.CS.BASICS.03",
       "lesson": "LANG.CS.BASICS.L02",
       "module": "csharp-basics",
-      "source": "content/shared/LANG/LANG.CS/LANG.CS.BASICS/LANG.CS.BASICS.L02.md"
+      "source": "content/shared/LANG/CS/LANG.CS.BASICS/LANG.CS.BASICS.L02.md"
+    },
+    "CS-COLL-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.CS.COLL.01",
+      "lesson": "LANG.CS.COLL.L03",
+      "module": "csharp-coll",
+      "source": "content/shared/LANG/CS/LANG.CS.COLL/LANG.CS.COLL.L03.md"
+    },
+    "CS-FLOW-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.CS.FLOW.01",
+      "lesson": "LANG.CS.FLOW.L04",
+      "module": "csharp-flow",
+      "source": "content/shared/LANG/CS/LANG.CS.FLOW/LANG.CS.FLOW.L04.md"
+    },
+    "CS-FUNC-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.CS.FUNC.01",
+      "lesson": "LANG.CS.FUNC.L05",
+      "module": "csharp-func",
+      "source": "content/shared/LANG/CS/LANG.CS.FUNC/LANG.CS.FUNC.L05.md"
     },
     "CS-SETUP-01": {
       "ai_policy": "FORBIDDEN",
@@ -36,7 +80,7 @@
       "assignment_ref": "ASG.LANG.CS.SETUP.01",
       "lesson": "LANG.CS.SETUP.L04",
       "module": "csharp-setup",
-      "source": "content/shared/LANG/LANG.CS/LANG.CS.SETUP/LANG.CS.SETUP.L04.md"
+      "source": "content/shared/LANG/CS/LANG.CS.SETUP/LANG.CS.SETUP.L04.md"
     },
     "CS-SETUP-02": {
       "assignment_ref": "ASG.LANG.CS.SETUP.02",
@@ -55,7 +99,7 @@
         "variant-a/machine-2.txt",
         "variant-a/machine-3.txt"
       ],
-      "source": "content/shared/LANG/LANG.CS/LANG.CS.SETUP/LANG.CS.SETUP.L01.md"
+      "source": "content/shared/LANG/CS/LANG.CS.SETUP/LANG.CS.SETUP.L01.md"
     },
     "CS-SETUP-03": {
       "ai_policy": "FORBIDDEN",
@@ -66,7 +110,7 @@
       "assignment_ref": "ASG.LANG.CS.SETUP.03",
       "lesson": "LANG.CS.SETUP.L02",
       "module": "csharp-setup",
-      "source": "content/shared/LANG/LANG.CS/LANG.CS.SETUP/LANG.CS.SETUP.L02.md"
+      "source": "content/shared/LANG/CS/LANG.CS.SETUP/LANG.CS.SETUP.L02.md"
     },
     "CS-SETUP-04": {
       "ai_policy": "FORBIDDEN",
@@ -77,7 +121,18 @@
       "assignment_ref": "ASG.LANG.CS.SETUP.04",
       "lesson": "LANG.CS.SETUP.L03",
       "module": "csharp-setup",
-      "source": "content/shared/LANG/LANG.CS/LANG.CS.SETUP/LANG.CS.SETUP.L03.md"
+      "source": "content/shared/LANG/CS/LANG.CS.SETUP/LANG.CS.SETUP.L03.md"
+    },
+    "CS-TEXT-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.CS.TEXT.01",
+      "lesson": "LANG.CS.TEXT.L04",
+      "module": "csharp-text",
+      "source": "content/shared/LANG/CS/LANG.CS.TEXT/LANG.CS.TEXT.L04.md"
     },
     "JAVA-BASICS-01": {
       "ai_policy": "FORBIDDEN",
@@ -88,7 +143,7 @@
       "assignment_ref": "ASG.LANG.JAVA.BASICS.01",
       "lesson": "LANG.JAVA.BASICS.L04",
       "module": "java-basics",
-      "source": "content/shared/LANG/LANG.JAVA/LANG.JAVA.BASICS/LANG.JAVA.BASICS.L04.md"
+      "source": "content/shared/LANG/JAVA/LANG.JAVA.BASICS/LANG.JAVA.BASICS.L04.md"
     },
     "JAVA-BASICS-02": {
       "ai_policy": "FORBIDDEN",
@@ -99,7 +154,7 @@
       "assignment_ref": "ASG.LANG.JAVA.BASICS.02",
       "lesson": "LANG.JAVA.BASICS.L01",
       "module": "java-basics",
-      "source": "content/shared/LANG/LANG.JAVA/LANG.JAVA.BASICS/LANG.JAVA.BASICS.L01.md"
+      "source": "content/shared/LANG/JAVA/LANG.JAVA.BASICS/LANG.JAVA.BASICS.L01.md"
     },
     "JAVA-BASICS-03": {
       "ai_policy": "FORBIDDEN",
@@ -110,7 +165,7 @@
       "assignment_ref": "ASG.LANG.JAVA.BASICS.03",
       "lesson": "LANG.JAVA.BASICS.L02",
       "module": "java-basics",
-      "source": "content/shared/LANG/LANG.JAVA/LANG.JAVA.BASICS/LANG.JAVA.BASICS.L02.md"
+      "source": "content/shared/LANG/JAVA/LANG.JAVA.BASICS/LANG.JAVA.BASICS.L02.md"
     },
     "JAVA-BASICS-04": {
       "ai_policy": "FORBIDDEN",
@@ -121,7 +176,18 @@
       "assignment_ref": "ASG.LANG.JAVA.BASICS.04",
       "lesson": "LANG.JAVA.BASICS.L03",
       "module": "java-basics",
-      "source": "content/shared/LANG/LANG.JAVA/LANG.JAVA.BASICS/LANG.JAVA.BASICS.L03.md"
+      "source": "content/shared/LANG/JAVA/LANG.JAVA.BASICS/LANG.JAVA.BASICS.L03.md"
+    },
+    "JAVA-COLL-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.JAVA.COLL.01",
+      "lesson": "LANG.JAVA.COLL.L04",
+      "module": "java-coll",
+      "source": "content/shared/LANG/JAVA/LANG.JAVA.COLL/LANG.JAVA.COLL.L04.md"
     },
     "JAVA-COLL-02": {
       "ai_policy": "FORBIDDEN",
@@ -134,6 +200,72 @@
       "module": "java-coll",
       "source": "content/shared/LANG/JAVA/LANG.JAVA.COLL/LANG.JAVA.COLL.L01.md"
     },
+    "JAVA-ERR-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.JAVA.ERR.01",
+      "lesson": "LANG.JAVA.ERR.L03",
+      "module": "java-err",
+      "source": "content/shared/LANG/JAVA/LANG.JAVA.ERR/LANG.JAVA.ERR.L03.md"
+    },
+    "JAVA-FLOW-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.JAVA.FLOW.01",
+      "lesson": "LANG.JAVA.FLOW.L03",
+      "module": "java-flow",
+      "source": "content/shared/LANG/JAVA/LANG.JAVA.FLOW/LANG.JAVA.FLOW.L03.md"
+    },
+    "JAVA-FUNC-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.JAVA.FUNC.01",
+      "lesson": "LANG.JAVA.FUNC.L04",
+      "module": "java-func",
+      "source": "content/shared/LANG/JAVA/LANG.JAVA.FUNC/LANG.JAVA.FUNC.L04.md"
+    },
+    "JAVA-GENERICS-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.JAVA.GENERICS.01",
+      "lesson": "LANG.JAVA.GENERICS.L03",
+      "module": "java-generics",
+      "source": "content/shared/LANG/JAVA/LANG.JAVA.GENERICS/LANG.JAVA.GENERICS.L03.md"
+    },
+    "JAVA-IO-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.JAVA.IO.01",
+      "lesson": "LANG.JAVA.IO.L04",
+      "module": "java-io",
+      "source": "content/shared/LANG/JAVA/LANG.JAVA.IO/LANG.JAVA.IO.L04.md"
+    },
+    "JAVA-MODS-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.JAVA.MODS.01",
+      "lesson": "LANG.JAVA.MODS.L03",
+      "module": "java-mods",
+      "source": "content/shared/LANG/JAVA/LANG.JAVA.MODS/LANG.JAVA.MODS.L03.md"
+    },
     "JAVA-SETUP-01": {
       "ai_policy": "FORBIDDEN",
       "checker": null,
@@ -143,7 +275,7 @@
       "assignment_ref": "ASG.LANG.JAVA.SETUP.01",
       "lesson": "LANG.JAVA.SETUP.L03",
       "module": "java-setup",
-      "source": "content/shared/LANG/LANG.JAVA/LANG.JAVA.SETUP/LANG.JAVA.SETUP.L03.md"
+      "source": "content/shared/LANG/JAVA/LANG.JAVA.SETUP/LANG.JAVA.SETUP.L03.md"
     },
     "JAVA-SETUP-02": {
       "ai_policy": "FORBIDDEN",
@@ -154,7 +286,7 @@
       "assignment_ref": "ASG.LANG.JAVA.SETUP.02",
       "lesson": "LANG.JAVA.SETUP.L01",
       "module": "java-setup",
-      "source": "content/shared/LANG/LANG.JAVA/LANG.JAVA.SETUP/LANG.JAVA.SETUP.L01.md"
+      "source": "content/shared/LANG/JAVA/LANG.JAVA.SETUP/LANG.JAVA.SETUP.L01.md"
     },
     "JAVA-SETUP-03": {
       "ai_policy": "FORBIDDEN",
@@ -165,7 +297,40 @@
       "assignment_ref": "ASG.LANG.JAVA.SETUP.03",
       "lesson": "LANG.JAVA.SETUP.L02",
       "module": "java-setup",
-      "source": "content/shared/LANG/LANG.JAVA/LANG.JAVA.SETUP/LANG.JAVA.SETUP.L02.md"
+      "source": "content/shared/LANG/JAVA/LANG.JAVA.SETUP/LANG.JAVA.SETUP.L02.md"
+    },
+    "JAVA-TEXT-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.JAVA.TEXT.01",
+      "lesson": "LANG.JAVA.TEXT.L03",
+      "module": "java-text",
+      "source": "content/shared/LANG/JAVA/LANG.JAVA.TEXT/LANG.JAVA.TEXT.L03.md"
+    },
+    "JAVA-TYPES-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.JAVA.TYPES.01",
+      "lesson": "LANG.JAVA.TYPES.L05",
+      "module": "java-types",
+      "source": "content/shared/LANG/JAVA/LANG.JAVA.TYPES/LANG.JAVA.TYPES.L05.md"
+    },
+    "JS-BASICS-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.JS.BASICS.01",
+      "lesson": "LANG.JS.BASICS.L04",
+      "module": "javascript-basics",
+      "source": "content/shared/LANG/JS/LANG.JS.BASICS/LANG.JS.BASICS.L04.md"
     },
     "JS-BASICS-02": {
       "ai_policy": "FORBIDDEN",
@@ -188,6 +353,50 @@
       "lesson": "LANG.JS.BASICS.L02",
       "module": "javascript-basics",
       "source": "content/shared/LANG/JS/LANG.JS.BASICS/LANG.JS.BASICS.L02.md"
+    },
+    "JS-COLL-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.JS.COLL.01",
+      "lesson": "LANG.JS.COLL.L04",
+      "module": "javascript-coll",
+      "source": "content/shared/LANG/JS/LANG.JS.COLL/LANG.JS.COLL.L04.md"
+    },
+    "JS-ERR-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.JS.ERR.01",
+      "lesson": "LANG.JS.ERR.L02",
+      "module": "javascript-err",
+      "source": "content/shared/LANG/JS/LANG.JS.ERR/LANG.JS.ERR.L02.md"
+    },
+    "JS-FLOW-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.JS.FLOW.01",
+      "lesson": "LANG.JS.FLOW.L02",
+      "module": "javascript-flow",
+      "source": "content/shared/LANG/JS/LANG.JS.FLOW/LANG.JS.FLOW.L02.md"
+    },
+    "JS-FUNC-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.JS.FUNC.01",
+      "lesson": "LANG.JS.FUNC.L05",
+      "module": "javascript-func",
+      "source": "content/shared/LANG/JS/LANG.JS.FUNC/LANG.JS.FUNC.L05.md"
     },
     "JS-SETUP-01": {
       "ai_policy": "FORBIDDEN",
@@ -222,6 +431,94 @@
       "module": "javascript-setup",
       "source": "content/shared/LANG/JS/LANG.JS.SETUP/LANG.JS.SETUP.L02.md"
     },
+    "JS-TEXT-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.JS.TEXT.01",
+      "lesson": "LANG.JS.TEXT.L03",
+      "module": "javascript-text",
+      "source": "content/shared/LANG/JS/LANG.JS.TEXT/LANG.JS.TEXT.L03.md"
+    },
+    "JS-TYPES-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.JS.TYPES.01",
+      "lesson": "LANG.JS.TYPES.L04",
+      "module": "javascript-types",
+      "source": "content/shared/LANG/JS/LANG.JS.TYPES/LANG.JS.TYPES.L04.md"
+    },
+    "PY-BASICS-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.PY.BASICS.01",
+      "lesson": "LANG.PY.BASICS.L04",
+      "module": "python-basics",
+      "source": "content/shared/LANG/PY/LANG.PY.BASICS/LANG.PY.BASICS.L04.md"
+    },
+    "PY-COLL-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.PY.COLL.01",
+      "lesson": "LANG.PY.COLL.L05",
+      "module": "python-coll",
+      "source": "content/shared/LANG/PY/LANG.PY.COLL/LANG.PY.COLL.L05.md"
+    },
+    "PY-ERR-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.PY.ERR.01",
+      "lesson": "LANG.PY.ERR.L03",
+      "module": "python-err",
+      "source": "content/shared/LANG/PY/LANG.PY.ERR/LANG.PY.ERR.L03.md"
+    },
+    "PY-FLOW-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.PY.FLOW.01",
+      "lesson": "LANG.PY.FLOW.L03",
+      "module": "python-flow",
+      "source": "content/shared/LANG/PY/LANG.PY.FLOW/LANG.PY.FLOW.L03.md"
+    },
+    "PY-FUNC-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.PY.FUNC.01",
+      "lesson": "LANG.PY.FUNC.L05",
+      "module": "python-func",
+      "source": "content/shared/LANG/PY/LANG.PY.FUNC/LANG.PY.FUNC.L05.md"
+    },
+    "PY-IO-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.PY.IO.01",
+      "lesson": "LANG.PY.IO.L05",
+      "module": "python-io",
+      "source": "content/shared/LANG/PY/LANG.PY.IO/LANG.PY.IO.L05.md"
+    },
     "PY-SETUP-01": {
       "ai_policy": "FORBIDDEN",
       "checker": null,
@@ -231,7 +528,7 @@
       "assignment_ref": "ASG.LANG.PY.SETUP.01",
       "lesson": "LANG.PY.SETUP.L03",
       "module": "python-setup",
-      "source": "content/shared/LANG/LANG.PY/LANG.PY.SETUP/LANG.PY.SETUP.L03.md"
+      "source": "content/shared/LANG/PY/LANG.PY.SETUP/LANG.PY.SETUP.L03.md"
     },
     "PY-SETUP-02": {
       "ai_policy": "FORBIDDEN",
@@ -242,7 +539,7 @@
       "assignment_ref": "ASG.LANG.PY.SETUP.02",
       "lesson": "LANG.PY.SETUP.L01",
       "module": "python-setup",
-      "source": "content/shared/LANG/LANG.PY/LANG.PY.SETUP/LANG.PY.SETUP.L01.md"
+      "source": "content/shared/LANG/PY/LANG.PY.SETUP/LANG.PY.SETUP.L01.md"
     },
     "PY-SETUP-03": {
       "ai_policy": "FORBIDDEN",
@@ -253,7 +550,29 @@
       "assignment_ref": "ASG.LANG.PY.SETUP.03",
       "lesson": "LANG.PY.SETUP.L02",
       "module": "python-setup",
-      "source": "content/shared/LANG/LANG.PY/LANG.PY.SETUP/LANG.PY.SETUP.L02.md"
+      "source": "content/shared/LANG/PY/LANG.PY.SETUP/LANG.PY.SETUP.L02.md"
+    },
+    "PY-TEXT-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.PY.TEXT.01",
+      "lesson": "LANG.PY.TEXT.L03",
+      "module": "python-text",
+      "source": "content/shared/LANG/PY/LANG.PY.TEXT/LANG.PY.TEXT.L03.md"
+    },
+    "PY-TYPES-01": {
+      "ai_policy": "FORBIDDEN",
+      "checker": null,
+      "required_files": [
+        "README.md"
+      ],
+      "assignment_ref": "ASG.LANG.PY.TYPES.01",
+      "lesson": "LANG.PY.TYPES.L04",
+      "module": "python-types",
+      "source": "content/shared/LANG/PY/LANG.PY.TYPES/LANG.PY.TYPES.L04.md"
     }
   },
   "catalog_source": "nerdy-solutions/ed-mentorship-content@471cd4e3445bd593afc924cfc58784587f621708"

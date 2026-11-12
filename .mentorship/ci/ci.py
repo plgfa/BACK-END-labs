@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Mentorship CI 1.3.0; Python 3.12+, standard library only."""
+"""Mentorship CI 1.3.1; Python 3.12+, standard library only."""
 import argparse
 import base64
 import hashlib
@@ -69,7 +69,7 @@ def field(text, name):
 
 class Report:
     def __init__(self, name, sha=""):
-        self.data = {"name": name, "sha": sha, "checks": [], "version": "1.3.0"}
+        self.data = {"name": name, "sha": sha, "checks": [], "version": "1.3.1"}
 
     def add(self, name, failures=None, detail="", status=None):
         failures = failures or []
@@ -101,7 +101,7 @@ def api(endpoint, token):
         raise ValueError("API endpoint must be relative")
     request = urllib.request.Request(os.environ.get("GITHUB_API_URL", "https://api.github.com") +
         endpoint, headers={"Authorization": "Bearer " + token, "Accept": "application/vnd.github+json",
-        "X-GitHub-Api-Version": "2022-11-28", "User-Agent": "mentorship-ci/1.3.0"})
+        "X-GitHub-Api-Version": "2022-11-28", "User-Agent": "mentorship-ci/1.3.1"})
     with urllib.request.urlopen(request, timeout=25) as response:
         return json.load(response)
 
@@ -191,7 +191,16 @@ def metadata(context, config, report, actual):
     if not match:
         errors.append("PR title: use [TASK-ID] Imperative description, or [REPO] for maintenance.")
     if not maintenance and task not in config["assignments"]:
-        errors.append("Unknown Task ID " + task + "; ask mentor to register the homework.")
+        errors.append("Unknown Task ID " + task + "; ask mentor to register the homework. "
+                      "Do not change the Task ID to make this check pass.")
+    if not maintenance and task:
+        labs = sorted({"/".join(p["filename"].split("/")[:3]) for p in context["files"]
+                       if p["filename"].startswith("assignments/") and p["filename"].count("/") >= 3
+                       and p.get("status") != "removed"})
+        wrong = [lab for lab in labs if not lab.split("/")[2].startswith(task.lower() + "-")]
+        if wrong:
+            errors.append("Task ID " + task + " does not match the changed lab folder: " + ", ".join(wrong[:5]) +
+                          ". Use the Task ID of the submitted assignment.")
     branch = pr["head"]["ref"]
     branch_prefix = r"(?:feat|fix|refactor|test|docs|chore)/"
     branch_pattern = branch_prefix + ("" if maintenance else re.escape(task.lower()) + "-") + r"[a-z0-9]+(?:-[a-z0-9]+)*"

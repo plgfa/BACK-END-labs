@@ -26,7 +26,7 @@ def seal(root):
                 p.relative_to(root).as_posix() != ".mentorship/bundle.json" and
                 "__pycache__" not in p.parts}
     (root / ".mentorship/bundle.json").write_text(
-        json.dumps({"version": "1.3.0", "files": manifest}, indent=2) + "\n", encoding="utf-8", newline="\n")
+        json.dumps({"version": "1.3.1", "files": manifest}, indent=2) + "\n", encoding="utf-8", newline="\n")
 
 
 class Checks(unittest.TestCase):
@@ -475,6 +475,33 @@ class Checks(unittest.TestCase):
         self.assertEqual("LANG.CS.SETUP.L01", self.config["assignments"]["CS-SETUP-02"]["lesson"])
         self.assertEqual("LANG.CS.SETUP.L04", self.config["assignments"]["CS-SETUP-01"]["lesson"])
         self.assertEqual(len(self.config["assignments"]), len({s["assignment_ref"] for s in self.config["assignments"].values()}))
+
+    def test_metadata_accepts_matching_lab_folder(self):
+        self.prepare_lab()
+        self.assertFalse(self.metadata().failed)
+
+    def test_metadata_rejects_task_id_of_another_lab(self):
+        self.prepare_lab()
+        self.context["files"] = [{"filename": "assignments/csharp-basics/cs-basics-01-ticketcalc/Program.cs",
+                                  "status": "added"}]
+        report = self.metadata()
+        self.assertTrue(report.failed)
+        self.assertIn("does not match the changed lab folder", json.dumps(report.__dict__, default=str))
+
+    def test_metadata_ignores_removed_lab_files(self):
+        self.prepare_lab()
+        self.context["files"].append({"filename": "assignments/csharp-basics/cs-basics-01-old/Program.cs",
+                                      "status": "removed"})
+        self.assertFalse(self.metadata().failed)
+
+    def test_unknown_task_warns_against_changing_id(self):
+        self.context["pr"]["title"] = "[CS-SETUP-99] Complete environment passport"
+        self.assertIn("Do not change the Task ID", json.dumps(self.metadata().__dict__, default=str))
+
+    def test_catalogue_registers_executed_language_homework(self):
+        for task, ref in {"CS-BASICS-01": "ASG.LANG.CS.BASICS.01", "JAVA-COLL-01": "ASG.LANG.JAVA.COLL.01",
+                          "JS-BASICS-01": "ASG.LANG.JS.BASICS.01", "PY-BASICS-01": "ASG.LANG.PY.BASICS.01"}.items():
+            self.assertEqual(ref, self.config["assignments"][task]["assignment_ref"])
 
     def test_valid_lab_structure(self):
         expected = self.prepare_lab()
