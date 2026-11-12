@@ -14,6 +14,6 @@
     ".mentorship/tests/test_semgrep_report.py": "c4277c7a452dcecd2e08f8b8860b2bda4fbbdb2e20675f5cc618beaf3a0b1646",
     ".mentorship/upstream.json": "6de27f14040451ace14fdf016d8c1521fe4c9e8a538ef8c03ad3a6164968ccb3",
     ".semgrep/README.md": "9292c226e13d2f86ecf7899b1b65797855afc31b9c524eae663e9b93bf320be4",
-    ".semgrepignore": "ce95f70f5d41c143fd6d0098b20f230fd26b3a943dbfda34eb1ffd3470a18c06"
+    ".semgrepignore": "9ef38dda22d6eff5e9fe5008e9a0c56238c0344a7f2f59ed6b8e0dc69d263691"
   }
 }

@@ -5,3 +5,4 @@
 mentorship-ci-student-*/
 # Embedded Git repositories are exercise fixtures; sample hooks are not project source.
 **/_git/hooks/*.sample
+**/*.git/hooks/*.sample
