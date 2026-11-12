@@ -1,0 +1,5 @@
+# Mentor-provided infrastructure is not participant assignment source.
+.mentorship/
+.github/
+.semgrep/
+mentorship-ci-student-*/

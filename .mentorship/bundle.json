@@ -1,0 +1,19 @@
+{
+  "version": "1.3.0",
+  "files": {
+    ".github/workflows/mentorship-ci.yml": "e00fc6299e5b97ac25bd279b495bfd117012fefc004d2df2951853531c549600",
+    ".github/workflows/mentorship-metadata.yml": "d41f2cfa31fee6c5e86c51eae3a5903cfcffa983185d40236781b21c906250d5",
+    ".mentorship/.gitignore": "4587d040ecf2b9d683b1020a32fec919fa8da2d37d86710bfca77aab24c0dd64",
+    ".mentorship/checkers/check_passport.sh": "cb6e5251b48510bce54c188ce6a55b7cd0ebdb0a0fd3c2249bbe2294b4ccd7a4",
+    ".mentorship/ci/ci.py": "2ac94e509d07be18e70e23356d02c04355513471aa7d7f0b43b5326e8d318aa4",
+    ".mentorship/ci/context.py": "b893661b41563e2e3c59695cf7cc5452a4b80c0db972ddd72f9a570b522f1ce5",
+    ".mentorship/ci/metadata.py": "dee80d763af60e5d7a1c3aa31d128abc5128112c2337c647c8cb847dd529df71",
+    ".mentorship/ci/semgrep_report.py": "76b119d98ed1cdb59a73b33694531d344f29ed98ab07017eb55549fd3b68f4fd",
+    ".mentorship/config.json": "2a26f9420ef4b068d56a700619c52065bb3dc4b1b6e7b9782e893175274d3b58",
+    ".mentorship/tests/test_ci.py": "e6c1481ccd4005de3c31356ff64bf2e1b8298a3328ad92b68243a76c3dc66bb0",
+    ".mentorship/tests/test_semgrep_report.py": "c4277c7a452dcecd2e08f8b8860b2bda4fbbdb2e20675f5cc618beaf3a0b1646",
+    ".mentorship/upstream.json": "6de27f14040451ace14fdf016d8c1521fe4c9e8a538ef8c03ad3a6164968ccb3",
+    ".semgrep/README.md": "9292c226e13d2f86ecf7899b1b65797855afc31b9c524eae663e9b93bf320be4",
+    ".semgrepignore": "5c9deecde7feb85ec2c2a432d48f3e3cb62bf8161abb7d1d3367879d8dced296"
+  }
+}
