@@ -1,0 +1,311 @@
+name: Mentorship metadata
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, edited, ready_for_review, converted_to_draft, assigned, unassigned, review_requested, review_request_removed]
+  pull_request_review:
+    types: [submitted, dismissed]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: mentorship-metadata-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  prepare:
+    name: PR setup
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+    outputs:
+      report: ${{ steps.setup.outputs.report }}
+      active: ${{ steps.setup.outputs.active }}
+    steps:
+      - name: Assign author and request mentor review
+        id: setup
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        env:
+          MCI_BOOTSTRAP_REVIEWER: exc3pt1ongit
+          MCI_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        with:
+          script: |
+            const sha = process.env.MCI_HEAD_SHA;
+            const number = context.payload.pull_request.number;
+            const result = {name: 'PR setup', sha, version: '1.3.1', checks: []};
+            const add = (name, status, detail) => result.checks.push({name, status, detail, errors: []});
+            let phase = 'PR metadata';
+            core.setOutput('active', 'false');
+            try {
+              let {data: pr} = await github.rest.pulls.get({...context.repo, pull_number: number});
+              if (pr.state !== 'open') {
+                add('PR state', 'Not applicable', 'Closed PR; no metadata changes.');
+              } else {
+                if (pr.head.sha !== sha) throw new Error('A newer revision exists. This run is superseded.');
+                if (pr.head.repo.full_name !== pr.base.repo.full_name) {
+                  throw new Error('Use a branch in the same repository; fork PRs are not supported.');
+                }
+                core.setOutput('active', 'true');
+                phase = 'Mentor configuration';
+                let mentors;
+                try {
+                  const {data: file} = await github.rest.repos.getContent({
+                    ...context.repo, path: '.mentorship/config.json',
+                    ref: context.payload.pull_request.base.sha
+                  });
+                  if (Array.isArray(file) || file.type !== 'file' || file.encoding !== 'base64') {
+                    throw new Error('The base-branch mentor configuration is not a regular JSON file.');
+                  }
+                  mentors = JSON.parse(Buffer.from(file.content, 'base64').toString('utf8')).mentors;
+                  add('Mentor configuration', 'Passed', 'Read mentor logins from the approved base revision.');
+                } catch (error) {
+                  if (error.status !== 404) throw error;
+                  mentors = [process.env.MCI_BOOTSTRAP_REVIEWER];
+                  add('Mentor configuration', 'Passed', 'Initial installation: use the packaged bootstrap mentor.');
+                }
+                if (!Array.isArray(mentors) || mentors.length === 0 || mentors.some(login =>
+                  typeof login !== 'string' || !/^(?=.{1,39}$)[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/.test(login))) {
+                  throw new Error('Configure a nonempty mentors array containing GitHub user logins.');
+                }
+                mentors = [...new Map(mentors.map(login => [login.toLowerCase(), login])).values()];
+                const author = pr.user.login;
+                const eligible = mentors.filter(login => login.toLowerCase() !== author.toLowerCase());
+                if (!eligible.length) throw new Error('The author cannot review their own PR; configure another mentor.');
+                const mentorNames = new Set(eligible.map(login => login.toLowerCase()));
+                phase = 'Author assignee';
+                if (!(pr.assignees || []).some(user => user.login.toLowerCase() === author.toLowerCase())) {
+                  await github.rest.issues.addAssignees({...context.repo, issue_number: number, assignees: [author]});
+                  add('Author assignee', 'Passed', 'Added PR author ' + author + '; existing assignees retained.');
+                } else {
+                  add('Author assignee', 'Passed', 'PR author is already assigned; no change.');
+                }
+                phase = 'Mentor reviewer';
+                const reviewed = async candidate => {
+                  if ((candidate.requested_reviewers || []).some(user => mentorNames.has(user.login.toLowerCase()))) return true;
+                  const reviews = await github.paginate(github.rest.pulls.listReviews,
+                    {...context.repo, pull_number: number, per_page: 100});
+                  return reviews.some(review => review.commit_id === sha &&
+                    ['APPROVED', 'COMMENTED', 'CHANGES_REQUESTED'].includes(review.state) &&
+                    mentorNames.has(review.user.login.toLowerCase()));
+                };
+                pr = (await github.rest.pulls.get({...context.repo, pull_number: number})).data;
+                if (pr.head.sha !== sha) throw new Error('A newer revision exists. This run is superseded.');
+                if (pr.draft) {
+                  add('Mentor reviewer', 'Pending', 'Draft PR: review will be requested when marked ready for review.');
+                } else if (await reviewed(pr)) {
+                  add('Mentor reviewer', 'Passed', 'Mentor is already requested or has reviewed this revision; no duplicate request.');
+                } else {
+                  await github.rest.pulls.requestReviewers({
+                    ...context.repo, pull_number: number, reviewers: [eligible[0]]
+                  });
+                  add('Mentor reviewer', 'Passed', 'Requested review from ' + eligible[0] + '.');
+                }
+                phase = 'Verify metadata';
+                pr = (await github.rest.pulls.get({...context.repo, pull_number: number})).data;
+                if (pr.head.sha !== sha) throw new Error('A newer revision exists. This run is superseded.');
+                if (!(pr.assignees || []).some(user => user.login.toLowerCase() === author.toLowerCase())) {
+                  throw new Error('GitHub did not confirm author assignment. Check repository access.');
+                }
+                if (!pr.draft && !(await reviewed(pr))) {
+                  throw new Error('GitHub did not confirm the mentor review request. Confirm mentor collaborator access.');
+                }
+                add('Metadata verification', 'Passed', 'Confirmed current revision and required fields through the API.');
+              }
+            } catch (error) {
+              const message = String(error.message || error).split('\n')[0].slice(0, 1000);
+              result.checks.push({name: phase, status: 'Failed', detail: '',
+                errors: [message + ' Check job permissions and mentor/author repository access.']});
+              core.setFailed('PR setup failed: ' + message);
+            }
+            result.status = result.checks.some(check => check.status === 'Failed') ? 'Failed' : 'Passed';
+            core.setOutput('report', Buffer.from(JSON.stringify(result)).toString('base64'));
+
+  metadata:
+    name: Submission metadata
+    needs: [prepare]
+    if: ${{ needs.prepare.outputs.active == 'true' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      report: ${{ steps.check.outputs.report }}
+    steps:
+      - name: Check out submitted revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: submission
+          persist-credentials: false
+      - name: Check out approved base
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: baseline
+          persist-credentials: false
+      - name: Select base-branch validator
+        shell: bash
+        run: |
+          if test -f baseline/.mentorship/ci/ci.py; then
+            echo "MCI_POLICY=baseline" >> "$GITHUB_ENV"
+          else
+            echo "MCI_POLICY=submission" >> "$GITHUB_ENV"
+          fi
+      - name: Read current PR metadata
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 "$MCI_POLICY/.mentorship/ci/ci.py" fetch --output "$RUNNER_TEMP/mentorship-context.json"
+      - name: Validate metadata and mentor policy
+        id: check
+        run: python3 submission/.mentorship/ci/metadata.py --validator "$MCI_POLICY" --root submission --baseline baseline --context "$RUNNER_TEMP/mentorship-context.json"
+
+  report:
+    name: PR dashboard
+    concurrency:
+      group: mentorship-report-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
+    if: ${{ always() && !cancelled() }}
+    needs: [prepare, metadata]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    permissions:
+      checks: read
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Publish this run report
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        env:
+          MCI_FULL: 'false'
+          MCI_METADATA: ${{ needs.metadata.outputs.report }}
+          MCI_METADATA_RESULT: ${{ needs.metadata.result }}
+          MCI_SETUP: ${{ needs.prepare.outputs.report }}
+          MCI_SETUP_RESULT: ${{ needs.prepare.result }}
+          MCI_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        with:
+          script: |
+            const marker = '<!-- mentorship-ci:v2 -->';
+            const number = context.payload.pull_request.number;
+            const sha = process.env.MCI_HEAD_SHA;
+            const full = process.env.MCI_FULL === 'true';
+            const run = Number(context.runId), attempt = Number(process.env.GITHUB_RUN_ATTEMPT || 1);
+            const {data: pr} = await github.rest.pulls.get({...context.repo, pull_number: number});
+            if (pr.state !== 'open' || pr.head.repo?.full_name !== pr.base?.repo?.full_name || pr.head.sha !== sha) {
+              core.notice('Closed, fork or superseded PR; no report update.');
+              return;
+            }
+            const esc = value => String(value ?? '').replace(/[\u0000-\u001f]/g, ' ')
+              .replace(/[\\|`*_{}\[\]()#!]/g, '\\$&').replace(/&/g, '&amp;')
+              .replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/@/g, '&#64;');
+            const icon = status => ({Passed: '✅', Failed: '❌', Pending: '⏳', 'Not applicable': '➖', 'Not run': '⚪'}[status] || '❔') + ' ' + esc(status);
+            const url = id => context.serverUrl + '/' + context.repo.owner + '/' + context.repo.repo + '/actions/runs/' + id;
+            const login = value => typeof value === 'string' && /^(?=.{1,39}$)[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/.test(value);
+            const person = value => login(value) ? '[' + esc(value) + '](https://github.com/' + value + ')' : 'Unknown';
+            const comments = await github.paginate(github.rest.issues.listComments, {...context.repo, issue_number: number, per_page: 100});
+            const managed = comments.filter(c => c.user?.login === 'github-actions[bot]' &&
+              /^(<!-- mentorship-ci:v[12] -->|<!-- mentorship-ci:run:\d+:attempt:\d+ -->)/.test(c.body || ''));
+            const existing = managed.find(c => (c.body || '').startsWith(marker)) || managed[0];
+            let state = {sha, parts: {}, history: []};
+            if (existing?.body.startsWith(marker)) {
+              try {
+                const saved = JSON.parse(Buffer.from(existing.body.match(/<!-- mentorship-state:([A-Za-z0-9+/=]+) -->/)[1], 'base64').toString('utf8'));
+                if (saved.sha === sha && saved.parts && Array.isArray(saved.history)) state = saved;
+                else if (Array.isArray(saved.history)) state.history = saved.history;
+              } catch (_) { core.notice('Rebuilding report state from current checks.'); }
+            }
+            for (const old of managed) {
+              if ((old.body || '').startsWith(marker)) continue;
+              const id = (old.body || '').match(/\/actions\/runs\/(\d+)/)?.[1];
+              if (id && !state.history.some(h => h.run === Number(id))) state.history.push({run: Number(id), attempt: 1,
+                sha: (old.body.match(/<code>([a-f0-9]{40})<\/code>/) || [])[1] || '',
+                kind: 'Previous run', status: /Failed|❌/.test(old.body) ? 'Failed' : 'Passed'});
+            }
+            const decode = (value, name, outcome) => {
+              try {
+                if (!value) throw new Error('No report produced; job result: ' + outcome);
+                const data = JSON.parse(Buffer.from(value, 'base64').toString('utf8'));
+                if (data.sha !== sha || !Array.isArray(data.checks)) throw new Error('Invalid report revision or format.');
+                const checks = data.checks.slice(0, 10).map(c => ({name: String(c.name).slice(0, 70),
+                  status: ['Passed', 'Failed', 'Pending', 'Not applicable', 'Not run'].includes(c.status) ? c.status : 'Failed',
+                  detail: String(c.detail || '').slice(0, 100), errors: (c.errors || []).slice(0, 2).map(e => String(e).slice(0, 80))}));
+                if (data.checks.slice(10).some(c => c.status === 'Failed')) checks.push({name: 'Additional failed checks', status: 'Failed', detail: 'Open the source run for the complete report.', errors: []});
+                return {name, checks};
+              } catch (error) { return {name, checks: [{name: 'Job execution', status: 'Failed', detail: String(error.message), errors: []}]}; }
+            };
+            const incoming = full ? {} : {
+              setup: decode(process.env.MCI_SETUP, 'PR setup', process.env.MCI_SETUP_RESULT),
+              metadata: decode(process.env.MCI_METADATA, 'Submission metadata', process.env.MCI_METADATA_RESULT)
+            };
+            if (full) {
+              incoming.standards = decode(process.env.MCI_STANDARDS, 'Repository standards', process.env.MCI_STANDARDS_RESULT);
+              incoming.semgrep = decode(process.env.MCI_SEMGREP, 'Semgrep', process.env.MCI_SEMGREP_RESULT);
+            }
+            for (const [key, part] of Object.entries(incoming)) {
+              const previous = state.parts[key];
+              if (!previous || run > previous.run || run === previous.run && attempt >= previous.attempt) state.parts[key] = {...part, run, attempt};
+            }
+            // Source jobs exist only in the code workflow, so metadata runs cannot mask their failures.
+            const codeChecks = await github.paginate(github.rest.checks.listForRef, {...context.repo, ref: sha, per_page: 100, filter: 'latest'});
+            const parts = [];
+            for (const [key, name] of [['setup', 'PR setup'], ['metadata', 'Submission metadata'], ['standards', 'Repository standards'], ['semgrep', 'Semgrep']]) {
+              const check = codeChecks.filter(c => c.name === name && c.app?.slug === 'github-actions').sort((a, b) => b.id - a.id)[0];
+              const saved = state.parts[key];
+              const checkRun = Number((check?.details_url || '').match(/\/actions\/runs\/(\d+)/)?.[1]);
+              const savedFailed = saved?.checks.some(c => c.status === 'Failed');
+              const agrees = check?.conclusion === 'success' ? !savedFailed : check?.conclusion === 'failure' ? savedFailed : false;
+              if (saved && (!check || saved.run > checkRun || saved.run === checkRun && (incoming[key] || check.status === 'completed' && agrees))) {
+                parts.push(saved);
+              } else {
+                const status = !check || check.status !== 'completed' ? 'Pending' :
+                  ['success', 'neutral'].includes(check.conclusion) ? 'Passed' : check.conclusion === 'skipped' ? 'Not run' : 'Failed';
+                parts.push({name, run: checkRun, checks: [{name: 'Job execution', status, errors: [],
+                  detail: check ? 'Latest source check: ' + check.status + ' / ' + (check.conclusion || 'pending') + '. Open workflow logs for details.' : 'Waiting for source checks on this commit.'}]});
+              }
+            }
+            const statuses = parts.flatMap(p => p.checks.map(c => c.status));
+            const overall = statuses.includes('Failed') ? 'Failed' : statuses.some(s => ['Pending', 'Not run'].includes(s)) ? 'Pending' : 'Passed';
+            const reviews = await github.paginate(github.rest.pulls.listReviews, {...context.repo, pull_number: number, per_page: 100});
+            const decisions = new Map();
+            for (const review of reviews) if (login(review.user?.login) && ['APPROVED', 'CHANGES_REQUESTED', 'DISMISSED'].includes(review.state)) decisions.set(review.user.login, review);
+            const reviewers = [...new Set([...(pr.requested_reviewers || []).map(u => u.login), ...decisions.keys()])];
+            const reviewLine = reviewers.map(user => {
+              const review = decisions.get(user);
+              const state = review?.commit_id === sha ? ({APPROVED: '✅ approved', CHANGES_REQUESTED: '❌ changes requested', DISMISSED: '⚪ dismissed'}[review.state]) :
+                (pr.requested_reviewers || []).some(u => u.login === user) ? '⏳ requested' : '⚪ reviewed an earlier commit';
+              return person(user) + ' — ' + state;
+            }).join('; ') || 'No reviewer assigned';
+            const history = {run, attempt, sha, kind: full ? 'Code + metadata' : 'Metadata', status: overall};
+            state.history = state.history.filter(h => !(h.run === run && h.attempt === attempt));
+            state.history.push(history);
+            state.history = state.history.sort((a, b) => b.run - a.run || b.attempt - a.attempt).slice(0, 8);
+            const banner = overall === 'Passed' ? '[!TIP]\n> ✅ Checks passed — mentor approval is still a separate requirement.' :
+              overall === 'Failed' ? '[!WARNING]\n> ❌ Changes needed — fix the failed checks below.' : '[!NOTE]\n> ⏳ Checks pending — this commit is not fully verified yet.';
+            let body = marker + '\n## Mentorship CI\n\n> ' + banner + '\n\n';
+            body += '| Submission | Current state |\n| --- | --- |\n| Commit | `' + sha + '` |\n';
+            body += '| Assignee | ' + ((pr.assignees || []).map(u => person(u.login)).join(', ') || 'Missing') + ' |\n';
+            body += '| Review | ' + reviewLine + ' |\n| Overall checks | ' + icon(overall) + ' |\n\n';
+            body += '| Check | Result |\n| --- | --- |\n';
+            for (const part of parts) for (const c of part.checks) body += '| ' + esc(part.name + ' / ' + c.name) + ' | ' + icon(c.status) + ' |\n';
+            body += '\n<details>\n<summary>Check details and next steps</summary>\n\n';
+            for (const part of parts) for (const c of part.checks) if (c.detail || c.errors.length) {
+              body += '**' + esc(part.name + ' / ' + c.name) + '**\n\n' + esc(c.detail) + '\n\n';
+              if (part.run) body += '[Source run #' + Number(part.run) + '](' + url(Number(part.run)) + ')\n\n';
+              for (const e of c.errors) body += '- ' + esc(e) + '\n';
+            }
+            body += '\nFull findings and any truncated details are available in the workflow logs.\n\n</details>\n\n';
+            body += '<details>\n<summary>Recent checks and reruns (last 8)</summary>\n\n| Run | Commit | Scope | Result |\n| --- | --- | --- | --- |\n';
+            for (const h of state.history) body += '| [#' + Number(h.run) + ' / ' + Number(h.attempt) + '](' + url(Number(h.run)) + '/attempts/' + Number(h.attempt) + ') | `' +
+              esc(h.sha.slice(0, 7)) + '` | ' + esc(h.kind) + ' | ' + icon(h.status) + ' |\n';
+            body += '\n</details>\n\n[Open this run](' + url(run) + '). Code scans run only on PR opening, reopening and new commits.\n';
+            body += '\n<!-- mentorship-state:' + Buffer.from(JSON.stringify(state)).toString('base64') + ' -->';
+            if (body.length > 60000) throw new Error('Report exceeds the safe comment size; inspect run logs.');
+            await core.summary.addRaw(body).write();
+            // Recheck immediately before writing, after API reads.
+            const latest = (await github.rest.pulls.get({...context.repo, pull_number: number})).data;
+            if (latest.state !== 'open' || latest.head.sha !== sha) return;
+            if (existing) await github.rest.issues.updateComment({...context.repo, comment_id: existing.id, body});
+            else await github.rest.issues.createComment({...context.repo, issue_number: number, body});
+            // Consolidate only our bot reports; their run links were migrated into history.
+            for (const old of managed) if (old.id !== existing?.id) await github.rest.issues.deleteComment({...context.repo, comment_id: old.id});

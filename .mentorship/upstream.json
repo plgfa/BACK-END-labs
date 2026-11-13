@@ -1,0 +1,41 @@
+{
+  "source_commit": "471cd4e3445bd593afc924cfc58784587f621708",
+  "files": {
+    "a54ec8e56a92165d907cc2bbe6d2567c97308cdb9e989aa4fe8e35227d322eb0": {
+      "source": "labs/starters/ASG.LANG.CS.SETUP.01/check_registry.sh"
+    },
+    "2b67d5bcce196a5c246bca54a532a436287b207c03ae3f755cfa23da7f006957": {
+      "source": "labs/starters/ASG.LANG.CS.SETUP.01/make_registry_repo.sh"
+    },
+    "cb6e5251b48510bce54c188ce6a55b7cd0ebdb0a0fd3c2249bbe2294b4ccd7a4": {
+      "source": "labs/starters/ASG.LANG.CS.SETUP.02/check_passport.sh"
+    },
+    "2ece296852d98ffe86358c1d7c7657c96e399e956e47dd3723fc2f72b8b587ad": {
+      "source": "labs/starters/ASG.LANG.CS.SETUP.03/check_card.sh"
+    },
+    "ec53b108cb992e91b6cb4c259e0a5e9e5a8635492f812fcbc3e3d981e6e79ee1": {
+      "source": "labs/starters/ASG.LANG.CS.SETUP.04/check_debug.sh"
+    },
+    "a5f95e83048044775017b86b3bf78af83ded91cedd31b34baee6fd88fea5b7e1": {
+      "source": "labs/starters/ASG.LANG.JAVA.BASICS.01/check_order.sh"
+    },
+    "78be2514cebda25edc53ac41932b5de9c748b646e9e1844f9949337e8d4c6235": {
+      "source": "labs/starters/ASG.LANG.JAVA.BASICS.02/check_types.sh"
+    },
+    "7f14e423418fb3087000f3198ce195ed73c869ed14ad36e8d44a83f7801f8399": {
+      "source": "labs/starters/ASG.LANG.JAVA.BASICS.03/check_sales.sh"
+    },
+    "fd3825ddea1b98eb0fa0308ccab0aadc25e43a30f19619fcf6451a5da95e7476": {
+      "source": "labs/starters/ASG.LANG.JAVA.BASICS.04/check_boxing.sh"
+    },
+    "048d729f184136f503486f57567c8dae16b986de404781c8e431e98123cc9480": {
+      "source": "labs/starters/ASG.LANG.JAVA.SETUP.01/check_debug.sh"
+    },
+    "4e8fdb3973e30bd303d3f27f4fc41c456427790191adef3250a131cce51da20f": {
+      "source": "labs/starters/ASG.LANG.JAVA.SETUP.02/check_build.sh"
+    },
+    "566a9699b574b98543d07569ee53c7ecb48d8675639ebf0f9c8fb0d8d34a0583": {
+      "source": "labs/starters/ASG.LANG.JAVA.SETUP.03/compare_runs.sh"
+    }
+  }
+}
